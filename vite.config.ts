@@ -10,7 +10,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-    base: '/Myportfolio/',
   optimizeDeps: {
     exclude: ['lucide-react'],
   },

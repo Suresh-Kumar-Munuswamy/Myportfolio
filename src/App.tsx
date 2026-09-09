@@ -15,6 +15,7 @@ import avatarImg from '@/assets/images/avatar.png';
 import certBadgeImg from '@/assets/images/cert-badge.png';
 import stcScreenshotImg from '@/assets/images/stc-screenshot.png';
 import bankingVisualImg from '@/assets/images/banking-visual.png';
+import StcCaseStudy from '@/StcCaseStudy';
 
 const expertise = [
   'UX Strategy',
@@ -40,14 +41,25 @@ const clients = ['STC', 'GOSI', 'Infosys Finacle', 'Jotun', 'Citi', '3M', 'SAP']
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [route, setRoute] = useState(window.location.hash);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
+    const onHashChange = () => {
+      setRoute(window.location.hash);
+      window.scrollTo(0, 0);
+    };
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('hashchange', onHashChange);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('hashchange', onHashChange);
+    };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+
+  if (route === '#work/stc') return <StcCaseStudy />;
 
   return (
     <div className="site-shell">
@@ -110,7 +122,7 @@ function App() {
         <section id="work" className="work section-frame content-section">
           <div className="section-heading section-heading-spread"><div><span className="section-number">02</span><div className="section-kicker">SELECTED CASEWORK</div><h2>Selected work</h2></div><p className="section-intro">A selection of enterprise experiences where strategy, systems thinking and craft meet.</p></div>
           <div className="project-grid">
-            <article className="project-card project-featured"><div className="project-image project-image-stc"><img src={stcScreenshotImg} alt="STC B2C digital transformation project screens" loading="lazy" /></div><div className="project-content"><div className="project-meta"><span>01</span><span>Telecom · Enterprise UX · Digital Transformation</span></div><h3>STC B2C Digital Transformation</h3><p>Redesigning complex B2C order management experiences across Prepaid, Postpaid, and Landline services.</p><div className="project-footer"><span>35% reduction in order creation time · 300+ screens</span><a href="#contact" aria-label="View STC case study placeholder">View Case Study <ArrowUpRight size={17} /></a></div></div></article>
+            <a className="project-card project-featured" href="#work/stc"><div className="project-image project-image-stc"><img src={stcScreenshotImg} alt="STC B2C digital transformation project screens" loading="lazy" /></div><div className="project-content"><div className="project-meta"><span>01</span><span>Telecom · Enterprise UX · Digital Transformation</span></div><h3>STC B2C Digital Transformation</h3><p>Redesigning complex B2C order management experiences across Prepaid, Postpaid, and Landline services.</p><div className="project-footer"><span>35% reduction in order creation time · 300+ screens</span><span className="project-case-link">View Case Study <ArrowUpRight size={17} /></span></div></div></a>
             <article className="project-card project-secondary"><div className="project-image"><img src={bankingVisualImg} alt="Corporate banking companion app concept visual" loading="lazy" /></div><div className="project-content"><div className="project-meta"><span>02</span><span>Banking · Enterprise UX · Interaction Design</span></div><h3>Corporate Banking Platform</h3><p>Designing intuitive experiences for complex corporate banking workflows across enterprise platforms.</p><div className="project-footer"><span>Research · Usability Testing</span><a href="#contact" aria-label="View corporate banking case study placeholder">View Case Study <ArrowUpRight size={17} /></a></div></div></article>
             <article className="project-card project-secondary project-money"><div className="project-image"><img src={avatarImg} alt="Money Manager project visual" loading="lazy" /></div><div className="project-content"><div className="project-meta"><span>03</span><span>FinTech · Product Design · User Research</span></div><h3>Money Manager</h3><p>An exploration grounded in the supplied portfolio visual and project material.</p><div className="project-footer"><span>Project details available in case study</span><a href="#contact" aria-label="View Money Manager case study placeholder">View Case Study <ArrowUpRight size={17} /></a></div></div></article>
           </div>
