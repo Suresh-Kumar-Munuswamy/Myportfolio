@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowLeft, ArrowUpRight, Check, CircleDot, Mail, MoveRight, Search, Users, Workflow } from 'lucide-react';
 import stcScreenshotImg from '@/assets/images/stc-screenshot.png';
 import stcDetailImg from '@/assets/images/stc1.png';
+import stcHeroCollageImg from '@/assets/images/stc-hero-collage.png';
 
 type ProcessStep = { number: string; title: string; description: string };
 
@@ -31,7 +32,7 @@ function StcCaseStudy() {
         <div className="case-frame case-back"><a href="#top"><ArrowLeft size={15} /> Back to Work</a></div>
         <section className="case-hero case-frame">
           <div className="case-hero-copy"><div className="case-eyebrow">B2C DIGITAL TRANSFORMATION</div><h1>Reimagining a 15-year-old <em>B2C sales experience</em></h1><p>Transforming a complex legacy application into a simpler, faster and scalable digital experience for frontline agents.</p><div className="case-meta"><span><b>ROLE</b>Lead UX Designer</span><span><b>DURATION</b>4+ Years</span><span><b>SCOPE</b>1000+ Screens</span></div></div>
-          <div className="case-hero-visual"><div className="case-purple-field" /><img className="case-hero-screen screen-back" src={stcDetailImg} alt="Provided STC order management screen" /><img className="case-hero-screen screen-front" src={stcScreenshotImg} alt="Provided STC B2C service management screen" /><div className="case-hero-label">STC · B2C SALES EXPERIENCE</div></div>
+          <div className="case-hero-visual"><div className="case-purple-field" /><img className="case-hero-collage" src={stcHeroCollageImg} alt="Customer-care workplace and STC research evidence" /><div className="case-hero-label">STC · B2C SALES EXPERIENCE</div></div>
         </section>
         <section className="case-hero-metrics case-frame"><div><strong>45 sec</strong><span>Time saved per order</span></div><div><strong>22 → 14</strong><span>Clicks per order</span></div><div><strong>2m 50s → 1m 55s</strong><span>Average completion time</span></div><div><strong>870 → ~1,260</strong><span>Potential orders / hour</span></div></section>
 
